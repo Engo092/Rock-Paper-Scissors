@@ -9,15 +9,22 @@
     </head>
 
     <body>
-        <p class="title">Choose a play!</p>
+        <p class="title">Choose a play! After 5 games a winner will be announced!</p>
         <div class="btn">
-            <button class="rock" value="rock">Rock</button>
-            <button class="paper" value="paper">Paper</button>
-            <button class="scissors" value="scissors">Scissors</button>
+            <button id="button" class="rock" value="rock">Rock</button>
+            <button id="button" class="paper" value="paper">Paper</button>
+            <button id="button" class="scissors" value="scissors">Scissors</button>
         </div>
 
-        <div class="result">
-            
+        <div class="result">⠀</div>
+
+        <div class="scores">
+            <div class="player"></div>
+            <div class="computer"></div>
+        </div>
+        
+        <div class="restart">
+            <button class="restartButton">Restart</button>
         </div>
     </body>
 </html>
