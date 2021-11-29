@@ -1,5 +1,5 @@
-# Rock Paper Scissors
+# Rock Paper Scissors (UI version)
 
-This project showcases a little bit of Javascript capabilites, it is a relatively simple program that simulates a Rock Paper Scissors game 5 times, and prints the overall winner at the end. Please keep in mind that the HTML page itself is completely empty (for now), so this is currently meant to be played in the console.
+This project showcases some Javascript capabilites, including DOM manipulation. It is a relatively simple program that simulates a Rock Paper Scissors game 5 times, and prints the overall winner at the end (feature still being developed in UI). Please keep in mind that the CSS of this page is pretty simple, as it is meant to represent Javascript capabilities more than anything else.
 
-Once the page is loaded, a prompt will appear in which you should type either "rock", "paper" or "scissors". The input is case insensitive and doesn't care about empty spaces at the end or start of string. In the console it is then shown if you lost or won, according to the usual Rock-Paper-Scissors rules. After 5 times the game ends and a winner is declared. Pretty simple program, and for now without any GUI.
+In this game the user plays against a computer, there are 3 buttons in the page, each labeled as "Rock", "Paper" or "Scissors". After the player makes their own choice a message will display telling them if they won that round. After 5 rounds a definitive winner will be shown, but that feature is currently being developed and for now the player will just be playing forever.

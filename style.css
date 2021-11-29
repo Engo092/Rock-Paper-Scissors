@@ -1,0 +1,38 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn {
+    display: flex;
+    gap: 40px;
+    margin: 100px 0;
+    justify-content: center;
+    height: 80%;
+}
+
+button {
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    width: 10%;
+    height: 10vh;
+    min-width: 80px;
+    min-height: 70px;
+}
+
+button:active {
+    background-color: lightslategray;
+    color: white;
+    border-color: ghostwhite;
+}
+
+.result {
+    text-align: center;
+    font-size: 24px;
+}
