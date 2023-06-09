@@ -3,8 +3,8 @@ let computerScore = 0;
 let gamesPlayed = 0;
 
 // Starts variables for displaying scores
-const playerDiv = document.querySelector(".playerChoice");
-const computerDiv = document.querySelector(".computerChoice");
+const playerDiv = document.querySelector(".player");
+const computerDiv = document.querySelector(".computer");
 playerDiv.textContent = `Player Score: ${playerScore}`;
 computerDiv.textContent = `Computer Score: ${computerScore}`;
 
@@ -12,21 +12,21 @@ computerDiv.textContent = `Computer Score: ${computerScore}`;
 let restart = document.querySelector(".restart");
 restart.setAttribute('style', "visibility: hidden;")
 
-const restartEvent = document.querySelector(".restartButton");
-restartEvent.addEventListener('click', () => {
-    restartGame();
-});
-
 
 const buttons = document.querySelectorAll('#button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        let computerChoice = computerPlay();
-        let winner = playRound(button.className, computerChoice);
+        let computer = computerPlay();
+        let winner = playRound(button.className, computer);
 
         computeRound(winner);
     });
+});
+
+const restartEvent = document.querySelector(".restartButton");
+restartEvent.addEventListener('click', () => {
+    restartGame();
 });
 
 
@@ -47,54 +47,54 @@ function computerPlay() {
 }
 
 
-function playRound(playerChoice, computerChoice) {
+function playRound(player, computer) {
     const div = document.querySelector('.result');
 
-    if (playerChoice === computerChoice) {
+    if (player === computer) {
         div.textContent = "It is a tie!";
         return "tie";
     }
 
-    if (playerChoice === "rock" && computerChoice === "scissors") {
+    if (player === "rock" && computer === "scissors") {
         div.textContent = "You Win! Rock beats Scissors";
-        return "playerChoice";
+        return "player";
     }
 
-    if (playerChoice === "scissors" && computerChoice === "rock") {
+    if (player === "scissors" && computer === "rock") {
         div.textContent = "You Lose! Rock beats Scissors";
-        return "computerChoice";
+        return "computer";
     }
 
-    if (playerChoice === "rock" && computerChoice === "paper") {
+    if (player === "rock" && computer === "paper") {
         div.textContent = "You Lose! Paper beats Rock";
-        return "computerChoice";
+        return "computer";
     }
 
-    if (playerChoice === "paper" && computerChoice === "rock") {
+    if (player === "paper" && computer === "rock") {
         div.textContent = "You Win! Paper beats Rock";
-        return "playerChoice";
+        return "player";
     }
 
-    if (playerChoice === "paper" && computerChoice === "scissors") {
+    if (player === "paper" && computer === "scissors") {
         div.textContent = "You Lose! Scissors beats Paper";
-        return "computerChoice";
+        return "computer";
     }
 
-    if (playerChoice === "scissors" && computerChoice === "paper") {
+    if (player === "scissors" && computer === "paper") {
         div.textContent = "You Win! Scissors beats Paper";
-        return "playerChoice";
+        return "player";
     }
 }
 
 
 function computeRound(winner) {
     gamesPlayed++;
-    if (winner == "playerChoice") {
+    if (winner == "player") {
         playerScore++;
         playerDiv.textContent = `Player Score: ${playerScore}`;
     }
 
-    if (winner == "computerChoice") {
+    if (winner == "computer") {
         computerScore++;
         computerDiv.textContent = `Computer Score: ${computerScore}`;
     }
