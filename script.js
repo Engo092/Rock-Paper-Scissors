@@ -3,8 +3,8 @@ let computerScore = 0;
 let gamesPlayed = 0;
 
 // Starts variables for displaying scores
-const playerDiv = document.querySelector(".player");
-const computerDiv = document.querySelector(".computer");
+const playerDiv = document.querySelector(".playerChoice");
+const computerDiv = document.querySelector(".computerChoice");
 playerDiv.textContent = `Player Score: ${playerScore}`;
 computerDiv.textContent = `Computer Score: ${computerScore}`;
 
@@ -12,21 +12,21 @@ computerDiv.textContent = `Computer Score: ${computerScore}`;
 let restart = document.querySelector(".restart");
 restart.setAttribute('style', "visibility: hidden;")
 
+const restartEvent = document.querySelector(".restartButton");
+restartEvent.addEventListener('click', () => {
+    restartGame();
+});
+
+
 const buttons = document.querySelectorAll('#button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        computer = computerPlay();
-        let winner = playRound(button.className, computer);
+        let computerChoice = computerPlay();
+        let winner = playRound(button.className, computerChoice);
 
         computeRound(winner);
     });
-});
-
-const restartEvent = document.querySelector(".restartButton");
-restartEvent.addEventListener('click', () => {
-    
-    restartGame();
 });
 
 
@@ -35,78 +35,77 @@ function computerPlay() {
 
     if (choice <= 0.33) {
         return "rock";
-    };
+    }
 
     if (choice <= 0.66) {
         return "paper";
-    };
+    }
 
     if (choice <= 0.99) {
         return "scissors";
-    };
-};
+    }
+}
 
 
-function playRound(player, computer) {
-
+function playRound(playerChoice, computerChoice) {
     const div = document.querySelector('.result');
 
-    if (player === computer) {
+    if (playerChoice === computerChoice) {
         div.textContent = "It is a tie!";
         return "tie";
-    };
+    }
 
-    if (player === "rock" && computer === "scissors") {
+    if (playerChoice === "rock" && computerChoice === "scissors") {
         div.textContent = "You Win! Rock beats Scissors";
-        return "player";
-    };
+        return "playerChoice";
+    }
 
-    if (player === "scissors" && computer === "rock") {
+    if (playerChoice === "scissors" && computerChoice === "rock") {
         div.textContent = "You Lose! Rock beats Scissors";
-        return "computer";
-    };
+        return "computerChoice";
+    }
 
-    if (player === "rock" && computer === "paper") {
+    if (playerChoice === "rock" && computerChoice === "paper") {
         div.textContent = "You Lose! Paper beats Rock";
-        return "computer";
-    };
+        return "computerChoice";
+    }
 
-    if (player === "paper" && computer === "rock") {
+    if (playerChoice === "paper" && computerChoice === "rock") {
         div.textContent = "You Win! Paper beats Rock";
-        return "player";
-    };
+        return "playerChoice";
+    }
 
-    if (player === "paper" && computer === "scissors") {
+    if (playerChoice === "paper" && computerChoice === "scissors") {
         div.textContent = "You Lose! Scissors beats Paper";
-        return "computer";
-    };
+        return "computerChoice";
+    }
 
-    if (player === "scissors" && computer === "paper") {
+    if (playerChoice === "scissors" && computerChoice === "paper") {
         div.textContent = "You Win! Scissors beats Paper";
-        return "player";
-    };
-};
+        return "playerChoice";
+    }
+}
 
 
 function computeRound(winner) {
     gamesPlayed++;
-    if (winner == "player") {
+    if (winner == "playerChoice") {
         playerScore++;
         playerDiv.textContent = `Player Score: ${playerScore}`;
-    };
+    }
 
-    if (winner == "computer") {
+    if (winner == "computerChoice") {
         computerScore++;
         computerDiv.textContent = `Computer Score: ${computerScore}`;
-    };
+    }
 
     if (gamesPlayed == 5) {
         buttons.forEach((button) => {
 
-            // Following modifications are made so that user has visual clues indicating buttons aren't working
+            // Visual clues indicating buttons aren't working
             button.disabled = true;
             button.removeAttribute("id");
-            button.setAttribute('style', "cursor: not-allowed;")
+            button.setAttribute('style', "cursor: not-allowed;");
         });
         const div = document.querySelector('.result');
         div.classList.add("winner");
@@ -119,15 +118,15 @@ function computeRound(winner) {
         }
         else {
             div.textContent = "Tie!";
-        };
+        }
 
-        // Turns restart button visible after 5 rounds
+        // Turns restart button visible
         restart.setAttribute('style', "visibility: visible;")
-    };
-};
+    }
+}
 
 
-// This function basically restarts page to the same state as when it was loaded
+// Restarts page to the same state as when it was initially loaded
 function restartGame() {
     playerScore = 0;
     computerScore = 0;
@@ -147,4 +146,4 @@ function restartGame() {
     
     playerDiv.textContent = `Player Score ${playerScore}`;
     computerDiv.textContent = `Computer Score ${computerScore}`;
-};
+}
